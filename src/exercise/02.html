@@ -11,21 +11,12 @@
     const rootElement = document.getElementById('root')
     const element = React.createElement ('div', {
       className: 'container',
-      children: 'Hello World',
+      children: [ 
+      React.createElement('span', {children: 'Hello'}),
+      ' ',
+      React.createElement('span', {children: 'World'}),
+      ],
     })
-    ReactDom.render(element, rootElement)
-
-    // You're going to re-implement this code using React!
-    // 💣 So go ahead and delete this implementation (or comment it out for now)
-    // These three lines are similar to React.createElement
-    // const element = document.createElement('div')
-    // element.textContent = 'Hello World' // 💰 in React, you set this with the "children" prop
-    // element.className = 'container' // 💰 in React, this is also called the "className" prop
-    // // This is similar to ReactDOM.render
-    // rootElement.append(element)
-
-    // 🐨 Please re-implement the regular document.createElement code above
-    // with these React API calls
-    // 💰 The example in the markdown file should be a good hint for you.
+    ReactDom.render(element, rootElement);
   </script>
 </body>
