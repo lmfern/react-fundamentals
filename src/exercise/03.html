@@ -11,7 +11,9 @@
     // to `type="text/babel"` so babel will compile this code for the browser to run.
 
     // 🐨 re-implement this using JSX!
-    const element = <div className="container">Hello World</div>
+    const className = 'container';
+    const children = 'Hello World';
+    const element = <div className= {className}>{children}</div>
     ReactDOM.render(element, document.getElementById('root'))
   </script>
 </body>
