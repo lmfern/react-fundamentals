@@ -7,15 +7,34 @@
   <script src="https://unpkg.com/react-dom@17.0.0/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone@7.12.4/babel.js"></script>
   <script type="text/babel">
-  // This is now being used as a component. Note the uppercase of Message
-    function Message ({children}) {
-      return <div className="message">{children}</div>
+  const PropTypes = {
+    string(props, propName, componentName) {
+      if (typeof props[propName] !== 'string') {
+        return new Error(
+          `The component ${componentName} needs the prop ${propName} to be a string.`,
+        )
+      }
+    }
+  }
+
+// Make a function called `message` which returns the JSX we want to share
+  function Message({subject, greeting}) {
+  return (
+    <div className="message">
+      {greeting}, {subject}
+    </div>
+  )
+}
+
+    Message.propTypes = {
+      subject: PropTypes.string,
+      greeting: PropTypes.string,
     }
 
     const element = (
       <div className="container">
-        <Message>Hello World</Message>
-        <Message>Gday World</Message>
+        <Message subject="World" greeting="Hello PropTypes"/>
+        <Message subject="World" greeting="Goodbype PropTypes"/>
       </div>
     )
 
