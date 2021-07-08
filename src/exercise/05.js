@@ -4,19 +4,13 @@
 import * as React from 'react'
 import '../box-styles.css'
 
-// 💰 Use the className for the size and style (backgroundColor) for the color
-// 💰 each of the elements should also have the "box" className applied
-
-// 🐨 add a className prop to each of these and apply the correct class names
-// 💰 Here are the available class names: box, box--large, box--medium, box--small
-
-// 🐨 add a style prop to each of them as well so their background color
-// matches what the text says it should be as well as `fontStyle: 'italic'`
-
-function Box({style, className = '', ...props}) {
+function Box({style, size, className = '', ...props}) {
+  // assign the size prop to the sizeClassName variable, for future proofing. If no size prop
+  // is passed in, sizeClassName's value is assigned an empty string.
+  const sizeClassName = size ? `box--${size}` : '';
   return (
     <div
-      className={`box ${className}`}
+      className={`box ${className} ${sizeClassName}`}
       style={{fontStyle: 'italic', ...style}}
       {...props}
     />
@@ -26,14 +20,14 @@ function Box({style, className = '', ...props}) {
 function App() {
   return (
     <div>
-      <Box className="box--small" style={{backgroundColor: 'lightblue'}}>
-        small lightblue box
+      <Box size="small" style={{backgroundColor: 'lightblue'}}>
+        small lightblue box with size prop
       </Box>
-      <Box className="box--medium" style={{backgroundColor: 'pink'}}>
-        medium pink box
+      <Box size="medium" style={{backgroundColor: 'pink'}}>
+        medium pink box with size prop
       </Box>
-      <Box className="box--large" style={{backgroundColor: 'orange'}}>
-        large orange box
+      <Box size="large" style={{backgroundColor: 'orange'}}>
+        large orange box with size prop
       </Box>
       <Box>sizeless box</Box>
     </div>
